@@ -40,9 +40,9 @@ export default {
         async login(data) {
             this.loading = true
             console.log(data)
-            await this.$store.dispatch('login', data)
+            await this.$store.dispatch('login/login', data)
             .then((res) => {
-                alert(JSON.stringify(this.$store.getters["getLoginData"]))
+                alert(JSON.stringify(this.$store.getters["login/getLoginData"]))
                 this.$router.push({ name: routeNames.HELLOWORLD})
             })
             .catch((err) => {

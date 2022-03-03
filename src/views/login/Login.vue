@@ -4,7 +4,7 @@
             <div class="box-1 mt-md-0 mt-5"> <img src="https://images.pexels.com/photos/2033997/pexels-photo-2033997.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" class="" alt=""> </div>
             <div class="box-2 d-flex flex-column h-100">
                 <div class="mt-5">
-                    <p class="mb-1 h-1"><strong>Welcome back!</strong></p>
+                    <p class="mb-1 h-1" style="text-align: center;"><strong>Welcome back!</strong></p>
                     <div class="d-flex flex-column align-items-center">
                         <br/><br/>
                         <div class="form-group"><input class="form-control" v-model="inputEmail" type="Email" name="email" placeholder="Email"></div>
