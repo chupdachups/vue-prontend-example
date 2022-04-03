@@ -19,6 +19,7 @@ const login = {
             console.log("******* login Call ********")
             await axiosService.post("login", params)
                 .then((res) => {
+                    // console.log('res', res.data)
                     commit("setLoginData", res.data)
                 })
                 .catch((err) => {

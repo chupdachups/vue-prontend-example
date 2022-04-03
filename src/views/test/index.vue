@@ -57,7 +57,3 @@ export default {
   }
 }
 </script>
-
-
-
-출처: https://imasoftwareengineer.tistory.com/42 [삐멜 소프트웨어 엔지니어]

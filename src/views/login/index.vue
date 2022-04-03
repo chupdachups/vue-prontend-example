@@ -42,13 +42,20 @@ export default {
             console.log(data)
             await this.$store.dispatch('login/login', data)
             .then((res) => {
-                alert(JSON.stringify(this.$store.getters["login/getLoginData"]))
-                this.$router.push({ name: routeNames.HELLOWORLD})
+                // alert(JSON.stringify(this.$store.getters["login/getLoginData"]))
+                //console.log('login res : ', res)
+                if(this.$store.getters["login/getLoginData"].role === 'ROLE_USER') {
+                    this.$router.push({ name: routeNames.RESERVE})
+                } else {
+                    this.$router.push({ name: routeNames.HELLOWORLD})    
+                }
+                
             })
             .catch((err) => {
                 // console.log('Errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
                 // this.modalMessage="aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 // this.showModal=true
+                console.log('err',err)
                 alert('Login failed')
             })
             this.loading = false

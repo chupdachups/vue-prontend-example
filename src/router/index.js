@@ -5,6 +5,8 @@ import Home from '@/views/home'
 import HelloWorld from '@/views/test'
 import Login from '@/views/login'
 import SignUp from '@/views/signUp'
+import Reserve from '@/views/reserve'
+import Product from '@/views/product'
 
 Vue.use(Router)
 
@@ -21,7 +23,9 @@ export const routeNames = {
     LOGIN: "Login",
     HOME: "home",
     HELLOWORLD: "HelloWorld",
-    SIGNUP: "SignUp"
+    SIGNUP: "SignUp",
+    RESERVE: "Reserve",
+    PRODUCT: "Product"
 }
 const routes = [
     {
@@ -50,6 +54,16 @@ const routes = [
         name: routeNames.HOME,
         component: Home,
         children: [
+            {
+                path: '/reserve',
+                name: routeNames.RESERVE,
+                component: () => import('@/views/reserve')
+            },
+            {
+                path: '/product',
+                name: routeNames.PRODUCT,
+                component: Product
+            },
             {
                 path: '/test',
                 name: routeNames.HELLOWORLD,
