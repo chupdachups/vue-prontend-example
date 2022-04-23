@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import persistedstate from 'vuex-persistedstate'
 import login from './modules/login'
 import account from './modules/account'
 import product from './modules/product'
@@ -12,5 +13,8 @@ export default new Vuex.Store({
         login: login,
         account: account,
         product: product
-    }
+    },
+    plugins: [persistedstate({
+       paths: ["login"]
+    })]
 })

@@ -5,25 +5,44 @@ import axiosService from '@/common/api/api-common'
 const account = {
     namespaced: true,
     state: {
-        signUp: ""
+        signUp: "",
+        accounts: []
     },
     getters: {
-        getSignUp: (state) => state.signUp
+        getSignUp: (state) => state.signUp,
+        getAccounts: (state) => state.accounts
     },
     mutations: {
         setSignUp(state, payload) {
             state.signUp = payload
+        },
+        setAccounts(state, payload) {
+            state.accounts = payload
         }
     },
     actions: {
         async signUp({commit}, params) {
-            console.log("******* signUp Call ********")
             await axiosService.post("accounts", params)
                 .then((res) => {
                     commit("setSignUp", res.data)
                 })
                 .catch((err) => {
-                    console.log(err)
+                    throw new Error(err)
+                })
+        },
+        async getAccounts({commit}, params) {
+            await axiosService.get("accounts")
+                .then((res) => {
+                    commit("setAccounts", res.data)
+                })
+                .catch((err) => {
+                    throw new Error(err)
+                })
+        },
+        async deleteAccounts({}, params) {
+            await axiosService.delete('accounts', {data: params})
+                .then((res)=>{
+                }).catch( (err) => {
                     throw new Error(err)
                 })
         }

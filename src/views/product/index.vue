@@ -13,7 +13,7 @@
                         img-alt="Image">
                         <b-card-text>₩{{item.price}}</b-card-text>
                         <template #footer>
-                            <b-button variant="primary">상세</b-button>
+                            <!-- <b-button variant="primary">상세</b-button> -->
                             <b-button variant="primary">예약</b-button>
                         </template>
                     </b-card>
@@ -73,11 +73,6 @@ export default {
         this.$store.dispatch('product/getProducts')
     },
     mounted() {
-        // const res = this.$store.getters["product/getProducts"]
-        // res.forEach( i  => {
-        //     this.products.push(i)
-        // });
-        // console.log('AAAAA',this.products)
     },
     computed: {
         getProducts() {

@@ -16,14 +16,11 @@ const login = {
     },
     actions: {
         async login({commit}, params) {
-            console.log("******* login Call ********")
             await axiosService.post("login", params)
                 .then((res) => {
-                    // console.log('res', res.data)
                     commit("setLoginData", res.data)
                 })
                 .catch((err) => {
-                    console.log(err)
                     throw new Error(err)
                 })
         }

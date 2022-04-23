@@ -39,11 +39,9 @@ export default {
     methods: {
         async login(data) {
             this.loading = true
-            console.log(data)
             await this.$store.dispatch('login/login', data)
             .then((res) => {
                 // alert(JSON.stringify(this.$store.getters["login/getLoginData"]))
-                //console.log('login res : ', res)
                 if(this.$store.getters["login/getLoginData"].role === 'ROLE_USER') {
                     this.$router.push({ name: routeNames.RESERVE})
                 } else {
@@ -52,10 +50,6 @@ export default {
                 
             })
             .catch((err) => {
-                // console.log('Errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
-                // this.modalMessage="aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                // this.showModal=true
-                console.log('err',err)
                 alert('Login failed')
             })
             this.loading = false

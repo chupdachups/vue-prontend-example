@@ -7,6 +7,9 @@ import Login from '@/views/login'
 import SignUp from '@/views/signUp'
 import Reserve from '@/views/reserve'
 import Product from '@/views/product'
+import ProductMgnt from '@/views/admin/product'
+import ReserveMgnt from '@/views/admin/reserve'
+import UserMgnt from '@/views/admin/user'
 
 Vue.use(Router)
 
@@ -25,7 +28,10 @@ export const routeNames = {
     HELLOWORLD: "HelloWorld",
     SIGNUP: "SignUp",
     RESERVE: "Reserve",
-    PRODUCT: "Product"
+    PRODUCT: "Product",
+    PRODUCT_MGNT: "ProductMgnt",
+    RESERVE_MGNT: "ReserveMgnt",
+    USER_MGNT: "UserMgnt"
 }
 const routes = [
     {
@@ -68,6 +74,21 @@ const routes = [
                 path: '/test',
                 name: routeNames.HELLOWORLD,
                 component: HelloWorld
+            },
+            {
+                path: '/product-mgnt',
+                name: routeNames.PRODUCT_MGNT,
+                component: ProductMgnt
+            },
+            {
+                path: '/reserve-mgnt',
+                name: routeNames.RESERVE_MGNT,
+                component: ReserveMgnt
+            },
+            {
+                path: '/user-mgnt',
+                name: routeNames.USER_MGNT,
+                component: UserMgnt
             }
         ]
     }
@@ -81,7 +102,6 @@ const router = new Router({
 })
 
 router.beforeEach(async(to, from, next) => {
-    console.log("to ==>", to)
     next()
 })
 

@@ -1,37 +1,30 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="dark" variant="info">
-            <b-navbar-brand class="p-1">예약 시스템</b-navbar-brand>
+        <b-navbar toggleable="lg" type="dark" :variant="gndVariant">
+            <b-navbar-brand class="p-1 my-gnd-title">예약 시스템</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-            <b-collapse id="nav-collapse" is-nav>
-                <b-navbar-nav>
-                    <b-nav-item href="#">Link</b-nav-item>
-                    <b-nav-item href="#" disabled>Disabled</b-nav-item>
+            <b-collapse id="nav-collapse" is-nav class="my-menu-bar">
+                <b-navbar-nav v-if="getUserRole !== 'ROLE_USER'">
+                    <b-nav-item @click="moveToProductMgnt">상품관리</b-nav-item>
+                    <b-nav-item @click="moveToReserveMgnt">예약관리</b-nav-item>
+                    <b-nav-item @click="moveToUserMgnt">유저관리</b-nav-item>
                 </b-navbar-nav>
 
                 <!-- Right aligned nav items -->
-                <b-navbar-nav class="mr-auto">
+                <b-navbar-nav class="my-menu-itme">
                     <!-- <b-nav-form>
                         <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
                         <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
                     </b-nav-form> -->
-
-                    <b-nav-item-dropdown text="Lang" right>
-                        <b-dropdown-item href="#">EN</b-dropdown-item>
-                        <b-dropdown-item href="#">ES</b-dropdown-item>
-                        <b-dropdown-item href="#">RU</b-dropdown-item>
-                        <b-dropdown-item href="#">FA</b-dropdown-item>
-                    </b-nav-item-dropdown>
-
-                    <b-nav-item-dropdown right>
+                    <b-nav-item-dropdown style="margin-right: 20px;">
                         <!-- Using 'button-content' slot -->
                         <template #button-content>
                             <em>User</em>
                         </template>
                         <b-dropdown-item href="#">Profile</b-dropdown-item>
-                        <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+                        <b-dropdown-item @click="onClickSignOut">Sign Out</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
             </b-collapse>
@@ -40,7 +33,53 @@
 </template>
 
 <script>
+import { routeNames } from '@/router'
+
 export default {
-    
+    data() {
+        return {
+            userRole: 'ROLE_USER',
+            gndVariant: 'info'
+        }
+    },
+    computed: {
+        getUserRole() {
+            this.userRole = this.$store.getters["login/getLoginData"].role
+            this.gndVariant = this.userRole === 'ROLE_USER' ? 'info':'primary'
+            return this.userRole
+        },
+        getGnbVariant() {
+            return this.gndVariant
+        }
+    },
+    methods: {
+        onClickSignOut() {
+            this.$router.push({ name: routeNames.LOGIN})
+        },
+        moveToProductMgnt() {
+            this.$router.push({ name: routeNames.PRODUCT_MGNT}).catch(()=>{})
+        },
+        moveToReserveMgnt() {
+            this.$router.push({ name: routeNames.RESERVE_MGNT}).catch(()=>{})
+        },
+        moveToUserMgnt() {
+            this.$router.push({ name: routeNames.USER_MGNT}).catch(()=>{})
+        }
+    }
 }
 </script>
+
+<style scoped>
+.my-gnd-title {
+    margin-left: 25px;
+}
+
+.my-menu-bar {
+    display: flex;
+}
+
+.my-menu-itme {
+    margin-left: auto;
+}
+</style>
+

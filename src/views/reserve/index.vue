@@ -43,13 +43,6 @@ export default {
         };
     },
     created() {
-        // axios.get('http://127.0.0.1:5000/todo/')
-        //     .then(response => {
-        //         this.toDoItems = response.data.map(r => r.data)
-        //     })
-        //     .catch(e => {
-        //         console.log('error : ', e)
-        //     })
     },
     methods: {
         moveToItemList() {

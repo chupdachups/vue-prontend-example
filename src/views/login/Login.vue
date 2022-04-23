@@ -33,16 +33,13 @@ export default {
         }
     },
     created() {
-        console.log('Login.vue created')
         this.inputEmail = ''
         this.inputPassword = ''
     },
     mounted() {
-        console.log('Login.vue mounted')
     },
     methods: {
         login() {
-            console.log('Login.vue login called')
             this.$emit('clickLogin', {
                 email: this.inputEmail,
                 password: this.inputPassword
