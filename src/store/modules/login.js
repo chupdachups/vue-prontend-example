@@ -1,4 +1,4 @@
-import axiosService from '@/common/api/api-common'
+import axiosService from '@/common/api/api-account'
 
 const login = {
     namespaced: true,
