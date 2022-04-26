@@ -46,7 +46,11 @@
             ref="addModal"
             @show="resetForm"
             @hidden="resetForm"
-            @ok="handleOk">
+            @ok="handleOk"
+            :header-bg-variant="headerBgVariant"
+            :header-text-variant="headerTextVariant"
+            :body-bg-variant="bodyBgVariant"
+            :body-text-variant="bodyTextVariant">
             <b-form @submit.stop.prevent="onSubmit">
                 <b-form-group label="상품명">
                     <b-form-input
@@ -57,7 +61,7 @@
                     <b-form-invalid-feedback
                         id="input-1-live-feedback">This is a required field and must be at least 10 characters.</b-form-invalid-feedback>
                 </b-form-group>
-                <b-form-group label="주소">
+                <b-form-group label="주소" class="mt-2">
                     <b-form-input
                     v-model="$v.form.address.$model"
                     :state="validateState('address')"
@@ -66,7 +70,7 @@
                     <b-form-invalid-feedback
                         id="input-2-live-feedback">This is a required field.</b-form-invalid-feedback>
                 </b-form-group>
-                <b-form-group label="상세주소">
+                <b-form-group label="상세주소" class="mt-2">
                     <b-form-input
                     v-model="$v.form.detailAddress.$model"
                     :state="validateState('detailAddress')"
@@ -75,7 +79,7 @@
                     <b-form-invalid-feedback
                         id="input-3-live-feedback">This is a required field.</b-form-invalid-feedback>
                 </b-form-group>
-                <b-form-group label="가격">
+                <b-form-group label="가격" class="mt-2">
                     <b-form-input
                     v-model="$v.form.price.$model"
                     :state="validateState('price')"
@@ -131,7 +135,11 @@ export default {
                 address: '',
                 detailAddress: '',
                 price: ''
-            }
+            },
+            headerBgVariant: 'primary',
+            headerTextVariant: 'light',
+            bodyBgVariant: 'light',
+            bodyTextVariant: 'dark',
         }
     },
     validations: {
@@ -242,6 +250,26 @@ export default {
 
 .btn-style {
     margin-left: auto;
+}
+
+</style>
+<style>
+/* #add-modal .modal-header {
+    font-weight: 0;
+} */
+#add-modal___BV_modal_header_ .close {
+    background-color: transparent;
+    border: 0;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+#add-modal___BV_modal_header_ .close:hover {
+    opacity: .8;
 }
 </style>
 

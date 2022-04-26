@@ -8,9 +8,9 @@
                     <div class="d-flex flex-column align-items-center">
                         <br/><br/>
                         <div class="form-group"><input class="form-control" v-model="inputEmail" type="Email" name="email" placeholder="Email"></div>
-                        <div class="form-group"><input class="form-control" v-model="inputPassword" type="password" name="password" placeholder="Password"></div>
+                        <div class="form-group"><input  v-on:keyup.enter="login" class="form-control" v-model="inputPassword" type="password" name="password" placeholder="Password"></div>
                         <div class="mt-3 custum-login">
-                            <div class="box me-5 custom-login2" @click="login">Log in</div>
+                            <div class="box me-5 custom-login2" @click="login" v-on:keyup.enter="login">Log in</div>
                         </div>
                     </div>
                 </div>

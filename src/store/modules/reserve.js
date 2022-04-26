@@ -23,7 +23,7 @@ const reserve = {
                     throw new Error(err)
                 })
         },
-        async saveReserve({}, params) {
+        async reserveProduct({}, params) {
             await axiosService.post("reserve", params)
                 .then((res)=>{
                 }).catch( (err) => {

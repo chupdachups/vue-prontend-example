@@ -11,10 +11,10 @@
                         style="max-width: 26rem;"
                         img-src="https://picsum.photos/300/300/?image=41"
                         img-alt="Image">
-                        <b-card-text>₩{{item.price}}</b-card-text>
+                        <b-card-text>₩ {{item.price.toLocaleString('ko-KR')}}</b-card-text>
                         <template #footer>
                             <!-- <b-button variant="primary">상세</b-button> -->
-                            <b-button variant="primary">예약</b-button>
+                            <b-button variant="primary" @click="openModal(item)">예약</b-button>
                         </template>
                     </b-card>
                 </b-card-group>
@@ -36,6 +36,7 @@
                 </b-card-group>
             </b-row>
         </div>
+        <reserve-modal ref="reserveModal" :item="selectItem"/>
     </div>
     <!-- <b-card-group deck>
         <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
@@ -51,7 +52,12 @@
 </template>
 
 <script>
+import reserveModal from "./sub/reserveModal"
+
 export default {
+    components: {
+        reserveModal
+    },
     data() {
         return {
             mode: "CARD",
@@ -66,7 +72,8 @@ export default {
                     title: "QWEQWE",
                     describe: "BBBBBBBBBBBBBBBBBBBBBBBB"
                 }
-            ]
+            ],
+            selectItem: {}
         }
     },
     created() {
@@ -85,6 +92,10 @@ export default {
         }
     },
     methods: {
+        openModal(item) {
+            this.selectItem = item
+            this.$refs.reserveModal.openModal()
+        }
     }
 }
 </script>
