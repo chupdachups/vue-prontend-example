@@ -42,40 +42,53 @@ export default {
       return {
             // Note 'isActive' is left out and will not appear in the rendered table
             fields: [
-            {
-                key: 'selected',
-                label: ''
-            },
-            {
-                key: 'reserveId',
-                label: '예약ID',
-                // sortable: true
-            },
-            {
-                key: 'product.productName',
-                label: '상품명',
-                // sortable: true
-            },
-            {
-                key: 'account.email',
-                label: 'Email',
-                // sortable: true
-            },
-            {
-                key: 'reserveFrom',
-                label: 'From',
-                // sortable: true
-            },
-            {
-                key: 'reserveTo',
-                label: 'To',
-                // sortable: true
-            },
-            {
-                key: 'price',
-                label: '가격',
-                // sortable: true
-            }
+                {
+                    key: 'selected',
+                    label: ''
+                },
+                {
+                    key: 'reserveId',
+                    label: '예약ID',
+                    // sortable: true
+                },
+                {
+                    key: 'product.productName',
+                    label: '상품명',
+                    // sortable: true
+                },
+                {
+                    key: 'account.email',
+                    label: 'Email',
+                    // sortable: true
+                },
+                {
+                    key: 'reserveFrom',
+                    label: 'From',
+                    formatter: (value) => {
+                            return /\d{4}-\d{2}-\d{2}/.exec(value.toString())[0]
+                        }
+                },
+                {
+                    key: 'reserveTo',
+                    label: 'To',
+                    formatter: (value) => {
+                            return /\d{4}-\d{2}-\d{2}/.exec(value.toString())[0]
+                        }
+                },
+                {
+                    key: 'product',
+                    label: '일수',
+                    formatter: (value, key, item) => {
+                        return this.diffDate(item)
+                    }
+                },
+                {
+                    key: 'product.price',
+                    label: '합계',
+                    formatter: (value, key, item) => {
+                        return `₩ ${(this.diffDate(item) * value).toLocaleString('ko-KR')}`
+                    }
+                }
             ],
             reserve: [],
             isBusy: true,
@@ -120,6 +133,18 @@ export default {
                 .catch(() =>{
                     alert("Failed to cancel reservation.")
                 })
+        },
+        diffDate(item) {
+            if( item.reserveTo === '' || item.reserveFrom ==='') {
+                return 0
+            }
+            const tmpTo = new Date(/\d{4}-\d{2}-\d{2}/.exec(item.reserveTo.toString())[0])
+            const tmpFrom = new Date(/\d{4}-\d{2}-\d{2}/.exec(item.reserveFrom.toString())[0])
+            const diff = tmpTo.getTime() - tmpFrom.getTime()
+            return Math.abs(diff / (1000* 3600 *24)) + 1
+        },
+        totalPrice() {
+            return this.diffDate * this.item.price
         }
     }
 }

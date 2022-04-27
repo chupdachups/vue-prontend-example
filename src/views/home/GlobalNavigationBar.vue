@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="dark" :variant="gndVariant">
-            <b-navbar-brand class="p-1 my-gnd-title">예약 시스템</b-navbar-brand>
+            <b-navbar-brand class="p-1 my-gnd-title" @click="moveToHome">예약 시스템</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -23,7 +23,7 @@
                         <template #button-content>
                             <em>User</em>
                         </template>
-                        <b-dropdown-item href="#">Profile</b-dropdown-item>
+                        <!-- <b-dropdown-item href="#">Profile</b-dropdown-item> -->
                         <b-dropdown-item @click="onClickSignOut">Sign Out</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
@@ -64,6 +64,13 @@ export default {
         },
         moveToUserMgnt() {
             this.$router.push({ name: routeNames.USER_MGNT}).catch(()=>{})
+        },
+        moveToHome() {
+            if(this.userRole === 'ROLE_USER') {
+                this.$router.push({ name: routeNames.RESERVE}).catch(()=>{})
+            }else{
+                this.$router.push({ name: routeNames.PRODUCT_MGNT}).catch(()=>{})
+            }
         }
     }
 }
@@ -72,6 +79,7 @@ export default {
 <style scoped>
 .my-gnd-title {
     margin-left: 25px;
+    cursor: pointer;
 }
 
 .my-menu-bar {

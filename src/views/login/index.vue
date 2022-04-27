@@ -45,7 +45,7 @@ export default {
                 if(this.$store.getters["login/getLoginData"].role === 'ROLE_USER') {
                     this.$router.push({ name: routeNames.RESERVE})
                 } else {
-                    this.$router.push({ name: routeNames.HELLOWORLD})    
+                    this.$router.push({ name: routeNames.PRODUCT_MGNT})    
                 }
                 
             })
