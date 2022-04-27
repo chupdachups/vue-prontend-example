@@ -1,4 +1,4 @@
-import axiosService from '@/common/api/api-reserve'
+import axiosService from '@/common/api/api-common'
 
 const reserve = {
     namespaced: true,

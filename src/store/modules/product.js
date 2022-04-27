@@ -1,4 +1,4 @@
-import axiosService from '@/common/api/api-product'
+import axiosService from '@/common/api/api-common'
 
 const product = {
     namespaced: true,
