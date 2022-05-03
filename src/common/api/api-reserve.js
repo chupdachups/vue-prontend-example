@@ -3,7 +3,7 @@ import { setInterceptors } from './interceptors'
 
 
 const axiosService = axios.create({
-    baseURL: process.env.RESERVE_API_BASE_URL
+    baseURL: process.env.API_GATEWAY_URL
     // baseURL: 'http://localhost:8070/'
 })
 
