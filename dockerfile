@@ -1,8 +1,8 @@
 FROM node:16.15-alpine
 
-RUN mkdir -p /user/src/app
+RUN mkdir -p /usr/src/app
 
-WORKDIR /user/src/app
+WORKDIR /usr/src/app
 ADD ./front-end /usr/src/app
 RUN npm install
 
