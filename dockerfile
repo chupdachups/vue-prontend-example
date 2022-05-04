@@ -12,7 +12,7 @@ RUN npm run build
 
 # Remove unused directories
 RUN rm -rf ./src
-RUN rm -rf ./build
+#RUN rm -rf ./build
 
 EXPOSE 8080
 
