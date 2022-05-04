@@ -3,7 +3,7 @@ FROM node:16.15-alpine
 RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
-ADD ./front-end /usr/src/app
+ADD ./ /usr/src/app
 RUN npm install
 
 ENV NODE_ENV=production
