@@ -1,5 +1,5 @@
 FROM nginx:latest
 
-ADD ./dist /some/content:/usr/share/nginx
+ADD ./dist /usr/share/nginx
 
 EXPOSE 80
