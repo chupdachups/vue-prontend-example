@@ -21,6 +21,14 @@ const login = {
                     commit("setLoginData", res.data)
                 })
                 .catch((err) => {
+                    if (!err.response) {
+                        // network error
+                        console.log('Error: Network Error');
+                    } else {
+                        console.log(err);
+                        console.log(err.response.data.message);
+                    }
+
                     throw new Error(err)
                 })
         }
