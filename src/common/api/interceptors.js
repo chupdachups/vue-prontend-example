@@ -7,7 +7,7 @@ export function setInterceptors(axiosService) {
         return Promise.reject(error)
     })
 
-    axiosService.interceptors.request.use(function (response) {
+    axiosService.interceptors.response.use(function (response) {
         console.log('response', response)
         return response
     }, function (error) {
