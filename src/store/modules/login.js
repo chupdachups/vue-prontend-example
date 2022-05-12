@@ -23,6 +23,7 @@ const login = {
                 .catch((err) => {
                     if (!err.response) {
                         // network error
+                        console.log(err);
                         console.log('Error: Network Error');
                     } else {
                         console.log(err);
